@@ -1,0 +1,32 @@
+#mainMain{
+  
+}
+
+#twoSectionsMain{
+    border: 2px solid red;
+    display: flex;
+}
+
+#stickyMain{
+    width: 400px;
+    height: auto;
+    padding: 16px;
+    background-color: blue;
+}
+
+#allDishesMain{
+    background-color: black;
+    height: 500px;
+    width: 100%;
+}
+
+/* 
+     example by da
+    
+    .basket{
+    width: 100%;
+    height: 400px;
+    background-color: aqua;
+    position: sticky;
+    top: 0;
+} */

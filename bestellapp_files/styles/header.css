@@ -1,0 +1,31 @@
+#headerHeader{
+    background-color: var(--orange-color);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+}
+
+#hamburgerMenuHeader{
+    height: 40px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: none;
+    border: none;
+}
+
+#headerHeader #hamburgerMenuHeader .lineHeader{
+    background-color: var(--white-color);
+    width: 30px;
+    height: 5px;
+    border-radius: 20px;
+}
+
+#headerHeader img{
+    width: 300px;
+    height: auto;
+}
