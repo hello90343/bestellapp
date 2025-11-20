@@ -1,0 +1,7 @@
+- Responsive
+- Gerichte hinzufügen durch die main-section
+- Gerichte werden einzelnt im Hamburger-Menü(HM) angezeigt
+- Die Anzahl der hinzugefügten Gerichte kann man vermehren oder minimieren. Bei 0 verschwindet das Gericht komplett von der Liste.
+- Durch das Löschen-Button wird das gesamte Gericht im HM gelöscht
+- localStorage
+- 
