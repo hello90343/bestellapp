@@ -4,4 +4,10 @@
 - Die Anzahl der hinzugefügten Gerichte kann man vermehren oder minimieren. Bei 0 verschwindet das Gericht komplett von der Liste.
 - Durch das Löschen-Button wird das gesamte Gericht im HM gelöscht
 - localStorage
-- 
+
+	•	Responsive
+	•	Add dishes through the main section
+	•	Dishes are displayed individually in the hamburger menu (HM)
+	•	The quantity of added dishes can be increased or decreased. At 0, the dish is completely removed from the list.
+	•	The delete button removes the entire dish from the HM
+	•	localStorage
