@@ -1,4 +1,6 @@
 :root{
     --orange-color : rgb(235, 152, 0);
     --white-color : rgb(255, 255, 255);
+    --lightGrey-color : rgb(238, 238, 238);
+    --lightGreyDarker-color : rgb(174, 174, 174);
 }

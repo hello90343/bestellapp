@@ -1,0 +1,41 @@
+#mainDishSection{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#mainDishImgSection{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+#mainDishLogo{
+    width: 100px;
+    height: auto;
+    position: absolute;
+    top: 56%;
+    right: 50%;
+}
+
+#evaluationArticle{
+    color: var(--orange-color);
+    text-decoration: none;
+}
+
+#navArticle{
+    background-color: var(--lightGrey-color);
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#navArticle button {
+    background: none;
+    border: 0.5px var(--lightGreyDarker-color) solid;
+    padding: 10px;
+    border-radius: 100px;
+    cursor: pointer;
+}

@@ -1,0 +1,15 @@
+#mainMain{
+  display: flex;
+}
+
+#sectionMain{
+    height: auto;
+    width: 100%;
+}
+
+#stickyMain{
+    width: 400px;
+    min-height: 100%;
+    padding: 16px;
+    background-color: blue;
+}

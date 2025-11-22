@@ -9,7 +9,9 @@
      <link rel="stylesheet" href="./styles/header.css">
      <link rel="stylesheet" href="./styles/colors.css">
      <link rel="stylesheet" href="./styles/standard.css">
-     <link rel="stylesheet" href="./styles/sticky.css">
+     <link rel="stylesheet" href="./styles/mainDishSection.css">
+     <link rel="stylesheet" href="./styles/allDishesSection.css">
+     <link rel="stylesheet" href="./styles/mainMain.css">
 
 </head>
 <body>
@@ -22,13 +24,24 @@
       </button>
     </header>
     <main id="mainMain">
-        <section id="mainDishMain"></section>
-        <div id="twoSectionsMain">
-        <section id="allDishesMain"></section>
+        <section id="sectionMain">
+          <article id="mainDishSection">
+            <img id="mainDishImgSection" src="./assets/imgs/mainDishMainImg.png" alt="Kasachisches Hauptgericht">
+            <h2>Beschbarmak</h2>
+            <a id="evaluationArticle" href="#">Bewertung (4.2 von 5 Sternen)</a>
+            <nav id="navArticle">
+              <p>&#10148;</p>
+              <button>Hauptgerichte</button>
+              <button>Beilage</button>
+              <img id="mainDishLogo" src="./assets/imgs/beschbarmak.png" alt="Ein Bild als Logo vom Beschbarmak">
+            </nav>
+          </article>
+          <article id="allDishesSection"></article>
+        </section>
         <section id="stickyMain"></section>
-        </div>
     </main>
 
+    <script src="./scripts/hm.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
