@@ -4,5 +4,6 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
     scroll-behavior: smooth;
+    background-color: var(--lighterGrey-color);
 }
 

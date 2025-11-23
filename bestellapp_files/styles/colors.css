@@ -1,7 +1,8 @@
 :root{
     --orange-color : rgb(235, 152, 0);
     --white-color : rgb(255, 255, 255);
-    --lightGrey-color : rgb(238, 238, 238);
+    --lighterGrey-color : rgb(250, 250, 250);
+    --lightGrey-color : rgb(237, 237, 237);
     --lightGreyDarker-color : rgb(174, 174, 174);
     --black-color : rgb(0,0,0);
 }
