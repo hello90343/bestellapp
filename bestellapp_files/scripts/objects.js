@@ -1,4 +1,4 @@
-let myDishes = [
+let dishes = [
     {
         "name" : "Pizza Krabben",
         "price" : 9.50,
