@@ -21,6 +21,7 @@ function renderPizza() {
     }
 }
 
+
 function addShoppingCart() {
     stickyMainDiv.innerHTML = "";
 
@@ -29,27 +30,71 @@ function addShoppingCart() {
     for (let j = 0; j < dishes.length; j++) {
         let keyDishes = dishes[j];
         if (keyDishes.amount > 0) {
-            html += aDSHtmlOne(keyDishes, j)
+            html += aDSHtmlOne(keyDishes, j);
         }
     }
 
-    html += `</ul>`; 
+    html += `</ul>`;
+
+    let sumNumber = subtotal(); 
+    let sumText = sumNumber.toFixed(2).replace(".", ",");
+
+    let delivery = deliveryCosts(); 
+    let deliveryText = delivery.toFixed(2).replace(".", ",");
+
+    let total = sumNumber + delivery; 
+    let totalText = total.toFixed(2).replace(".", ",");
+
+    html += `
+        <div>
+            <p>Zwischensumme</p>
+            <p>${sumText} €</p>
+        </div>
+        <div>
+            <p>Lieferkosten</p>
+            <p>${deliveryText} €</p>
+        </div>
+        <div>
+            <p>Gesamtkosten</p>
+            <p>${totalText} €</p>
+        </div>
+    `;
+
     stickyMainDiv.innerHTML = html;
 }
 
 function addMore(i) {
     dishes[i].amount++;
-    addShoppingCart(i);  
+    addShoppingCart();  
 }
 
 function removeMore(i){
     dishes[i].amount--;
-    addShoppingCart(i);
+    addShoppingCart();
 }
 
 function deleteItem(i) {
     dishes[i].amount = 0;
-    addShoppingCart(i);
+    addShoppingCart();
+}
+
+function subtotal() {
+    let sum = 0;
+
+    for (let i = 0; i < dishes.length; i++) {
+        let dish = dishes[i];
+
+        if (dish.amount > 0) {
+            sum += dish.amount * dish.price;
+        }
+    }
+
+    return sum;
+}
+
+function deliveryCosts(){
+    let fixSum = 5.00;
+    return fixSum;
 }
 
 

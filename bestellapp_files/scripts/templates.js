@@ -9,7 +9,7 @@ function aDSHtml(keyDishes, priceChange, i){
                      <button onclick="addMore(${i})" class="aDSMealRight aDSSelection${i}">&#65291;</button>
                      </section>
                      `;
-}å
+}
 
 function aDSHtmlOne (keyDishes, j){
     return `
@@ -22,7 +22,7 @@ function aDSHtmlOne (keyDishes, j){
                     <button onclick="addMore(${j})">&plus;</button>
                     </div>
                     <div class="aDSMoneyTwo">
-                    ${keyDishes.price.toFixed(2).replace(".", ",")} ${keyDishes.currency}
+                    ${(keyDishes.price * keyDishes.amount).toFixed(2).replace(".", ",")} ${keyDishes.currency}
                     </div>
                     <div onclick="deleteItem(${j})" class="aDSTrash">
                     &#128465; 
