@@ -60,6 +60,10 @@ function addShoppingCart() {
         </div>
     `;
 
+    html += `
+              <button onclick="orderFood()" id="buttonBestellen">Bestellen</button>
+              `;
+
     stickyMainDiv.innerHTML = html;
 }
 
@@ -95,6 +99,15 @@ function subtotal() {
 function deliveryCosts(){
     let fixSum = 5.00;
     return fixSum;
+}
+
+function orderFood() {
+    for(let k = 0; k < dishes.length; k++){
+        let keyDishes = dishes[k];
+        keyDishes.amount = 0;
+    }
+    stickyMainDiv.innerHTML = "";
+    alert("Vielen Dank für deine Bestellung!");
 }
 
 
