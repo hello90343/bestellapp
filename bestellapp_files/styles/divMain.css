@@ -23,10 +23,10 @@
 }
 
 #stickyMain h2 {
-  border: red 2px solid;
   text-align: center;
   background: none;
   margin-bottom: 40px;
+  margin-top: 20px;
 }
 
 .aDSBottom{
@@ -72,4 +72,22 @@
   padding: 10px;
   border-radius: 20px;
 }
+
+#hamburgerMenuMain{
+  width: 80%;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border-radius: 50px;
+}
+
+#dialog{
+  width: 50%;
+  height: 50%;
+  background-color: green;
+}
+
 

@@ -1,4 +1,11 @@
 let dishes = [
+     {
+        "name" : "Beschbarmak",
+        "price" : 19.00,
+        "currency" : "\u20AC",
+        "description" : "breite, hausgemachte Nudeln und gekochtes Rindfleisch",
+        "amount" : 0
+    },
     {
         "name" : "Pizza Krabben",
         "price" : 9.50,

@@ -1,79 +1,99 @@
 const allDishesSection = document.getElementById("allDishesSection");
 const stickyMain = document.getElementById("stickyMain");
 const stickyMainDiv = document.getElementById("stickyMainDiv");
+const dialog = document.getElementById("dialog");
 
-function init(){
-    renderPizza()
+function init() {
+    renderPizza();
 }
-
 
 function renderPizza() {
     allDishesSection.innerHTML = "";
     allDishesSection.innerHTML += `
-                                   <img id="aDSImg" src="./assets/imgs/allDishesImg.png" alt="Hauptgerichte">
-                                   `;
+        <img id="aDSImg" src="./assets/imgs/allDishesImg.png" alt="Hauptgerichte">
+    `;
 
-    for(let i = 0; i < dishes.length; i++) {
+    for (let i = 0; i < dishes.length; i++) {
         let keyDishes = dishes[i];
         let priceChange = keyDishes.price.toFixed(2).replace(".", ",");
-        let html = aDSHtml(keyDishes, priceChange, i);
-                     allDishesSection.innerHTML += html;
+        let html = aDSHtmlOne(keyDishes, priceChange, i);
+        allDishesSection.innerHTML += html;
     }
 }
 
-
 function addShoppingCart() {
     stickyMainDiv.innerHTML = "";
+    dialog.innerHTML = "";
 
-    let html = `<ul>`;
+    let html = `<ul class="cartList">`;
+    let hasItems = false;
+
 
     for (let j = 0; j < dishes.length; j++) {
         let keyDishes = dishes[j];
+
         if (keyDishes.amount > 0) {
-            html += aDSHtmlOne(keyDishes, j);
+            hasItems = true;
+            html += aDSHtmlOne(keyDishes, null, j);
         }
     }
 
     html += `</ul>`;
 
-    let sumNumber = subtotal(); 
+    if (!hasItems) {
+        html += `
+            <div>
+                <p>Dein Warenkorb ist leer.</p>
+            </div>
+        `;
+
+        stickyMainDiv.innerHTML = html;
+        dialog.innerHTML = html;
+        return; 
+    }
+
+
+    let sumNumber = subtotal();
     let sumText = sumNumber.toFixed(2).replace(".", ",");
 
-    let delivery = deliveryCosts(); 
+    let delivery = deliveryCosts();
     let deliveryText = delivery.toFixed(2).replace(".", ",");
 
-    let total = sumNumber + delivery; 
+    let total = sumNumber + delivery;
     let totalText = total.toFixed(2).replace(".", ",");
 
+
     html += `
-        <div>
-            <p>Zwischensumme</p>
-            <p>${sumText} €</p>
-        </div>
-        <div>
-            <p>Lieferkosten</p>
-            <p>${deliveryText} €</p>
-        </div>
-        <div>
-            <p>Gesamtkosten</p>
-            <p>${totalText} €</p>
+        <div class="cartSum">
+            <div>
+                <p>Zwischensumme</p>
+                <p>${sumText} €</p>
+            </div>
+            <div>
+                <p>Lieferkosten</p>
+                <p>${deliveryText} €</p>
+            </div>
+            <div>
+                <p>Gesamtkosten</p>
+                <p>${totalText} €</p>
+            </div>
+
+            <button onclick="orderFood()" id="buttonBestellen">Bestellen</button>
         </div>
     `;
 
-    html += `
-              <button onclick="orderFood()" id="buttonBestellen">Bestellen</button>
-              `;
-
     stickyMainDiv.innerHTML = html;
+    dialog.innerHTML = html;
 }
 
 function addMore(i) {
     dishes[i].amount++;
-    addShoppingCart();  
+    addShoppingCart();
 }
 
-function removeMore(i){
+function removeMore(i) {
     dishes[i].amount--;
+    if (dishes[i].amount < 0) dishes[i].amount = 0;
     addShoppingCart();
 }
 
@@ -92,22 +112,77 @@ function subtotal() {
             sum += dish.amount * dish.price;
         }
     }
-
     return sum;
 }
 
-function deliveryCosts(){
-    let fixSum = 5.00;
-    return fixSum;
+function deliveryCosts() {
+    return 5.00;
 }
 
 function orderFood() {
-    for(let k = 0; k < dishes.length; k++){
-        let keyDishes = dishes[k];
-        keyDishes.amount = 0;
+
+    for (let k = 0; k < dishes.length; k++) {
+        dishes[k].amount = 0;
     }
+
+
     stickyMainDiv.innerHTML = "";
+
+
+    dialog.innerHTML = "";
+
+
+    if (dialog.open) {
+        dialog.close();
+    }
+
     alert("Vielen Dank für deine Bestellung!");
 }
 
+function clickHamburgerMenuRespo() {
+    dialog.innerHTML = "";   
+    dialog.showModal();
+    addShoppingCart();
+}
 
+function aDSHtmlOne(keyDishes, priceChange, i) {
+
+    if (keyDishes.amount > 0) {
+        return `
+            <li class="aDSMoney">
+                <h3>${keyDishes.name}</h3>
+
+                <div class="aDSBottom">
+                    <div class="aDSAmount">
+                        <button onclick="removeMore(${i})">&minus;</button>
+                        ${keyDishes.amount}x 
+                        <button onclick="addMore(${i})">&plus;</button>
+                    </div>
+
+                    <div class="aDSMoneyTwo">
+                        ${(keyDishes.price * keyDishes.amount).toFixed(2).replace(".", ",")} ${keyDishes.currency}
+                    </div>
+
+                    <div onclick="deleteItem(${i})" class="aDSTrash">
+                        &#128465;
+                    </div>
+                </div>
+            </li>
+        `;
+    }
+
+
+    return `
+        <section class="aDSMeal">
+            <article class="aDSMealLeft">
+                <h3>${keyDishes.name}</h3>
+                <p><span style="font-weight: 100;">${keyDishes.description}</span></p>
+                <p><span style="color: rgb(235, 152, 0); font-weight:600;">
+                    ${priceChange}${keyDishes.currency}
+                </span></p>
+            </article>
+
+            <button onclick="addMore(${i})" class="aDSMealRight">&#65291;</button>
+        </section>
+    `;
+}

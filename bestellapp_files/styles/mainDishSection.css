@@ -9,14 +9,19 @@
     height: 200px;
     object-fit: cover;
     object-position: bottom;
+    background-image: url(/bestellapp_files/assets/imgs/mainDishMainImg.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
 }
 
 #mainDishLogo{
     width: 100px;
     height: auto;
-    position: absolute;
-    top: 56%;
-    right: 50%;
+    position: relative;
+    margin-top: 70px;
+    margin-left: 30px;
+    border-radius: 40px;
 }
 
 #evaluationArticle{
