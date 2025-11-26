@@ -95,7 +95,12 @@
   position: sticky;
   bottom: 20px;     
   z-index: 2000;     
+  background-color: black;
+  color: white;
+}
 
+#hamburgerMenuMain p{
+  background: none;
 }
 
 #dialog{
