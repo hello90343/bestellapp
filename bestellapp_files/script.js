@@ -2,6 +2,7 @@ const allDishesSection = document.getElementById("allDishesSection");
 const stickyMain = document.getElementById("stickyMain");
 const stickyMainDiv = document.getElementById("stickyMainDiv");
 const dialog = document.getElementById("dialog");
+const dialogContent = document.getElementById("dialogContent");
 
 function init() {
     renderPizza();
@@ -23,7 +24,7 @@ function renderPizza() {
 
 function addShoppingCart() {
     stickyMainDiv.innerHTML = "";
-    dialog.innerHTML = "";
+    dialogContent.innerHTML = "";
 
     let html = `<ul class="cartList">`;
     let hasItems = false;
@@ -48,7 +49,7 @@ function addShoppingCart() {
         `;
 
         stickyMainDiv.innerHTML = html;
-        dialog.innerHTML = html;
+        dialogContent.innerHTML = html;
         return; 
     }
 
@@ -63,27 +64,10 @@ function addShoppingCart() {
     let totalText = total.toFixed(2).replace(".", ",");
 
 
-    html += `
-        <div class="cartSum">
-            <div>
-                <p>Zwischensumme</p>
-                <p>${sumText} €</p>
-            </div>
-            <div>
-                <p>Lieferkosten</p>
-                <p>${deliveryText} €</p>
-            </div>
-            <div>
-                <p>Gesamtkosten</p>
-                <p>${totalText} €</p>
-            </div>
-
-            <button onclick="orderFood()" id="buttonBestellen">Bestellen</button>
-        </div>
-    `;
+    html += htmlThree(sumText, deliveryText, totalText);
 
     stickyMainDiv.innerHTML = html;
-    dialog.innerHTML = html;
+    dialogContent.innerHTML = html;
 }
 
 function addMore(i) {
@@ -125,11 +109,9 @@ function orderFood() {
         dishes[k].amount = 0;
     }
 
+    stickyMainDiv.innerHTML = hmtlFour();
 
-    stickyMainDiv.innerHTML = "";
-
-
-    dialog.innerHTML = "";
+    dialogContent.innerHTML = "";
 
 
     if (dialog.open) {
@@ -137,52 +119,16 @@ function orderFood() {
     }
 
     alert("Vielen Dank für deine Bestellung!");
+
 }
 
 function clickHamburgerMenuRespo() {
-    dialog.innerHTML = "";   
+    dialogContent.innerHTML = "";   
     dialog.showModal();
     addShoppingCart();
 }
 
-function aDSHtmlOne(keyDishes, priceChange, i) {
-
-    if (keyDishes.amount > 0) {
-        return `
-            <li class="aDSMoney">
-                <h3>${keyDishes.name}</h3>
-
-                <div class="aDSBottom">
-                    <div class="aDSAmount">
-                        <button onclick="removeMore(${i})">&minus;</button>
-                        ${keyDishes.amount}x 
-                        <button onclick="addMore(${i})">&plus;</button>
-                    </div>
-
-                    <div class="aDSMoneyTwo">
-                        ${(keyDishes.price * keyDishes.amount).toFixed(2).replace(".", ",")} ${keyDishes.currency}
-                    </div>
-
-                    <div onclick="deleteItem(${i})" class="aDSTrash">
-                        &#128465;
-                    </div>
-                </div>
-            </li>
-        `;
-    }
-
-
-    return `
-        <section class="aDSMeal">
-            <article class="aDSMealLeft">
-                <h3>${keyDishes.name}</h3>
-                <p><span style="font-weight: 100;">${keyDishes.description}</span></p>
-                <p><span style="color: rgb(235, 152, 0); font-weight:600;">
-                    ${priceChange}${keyDishes.currency}
-                </span></p>
-            </article>
-
-            <button onclick="addMore(${i})" class="aDSMealRight">&#65291;</button>
-        </section>
-    `;
+function closeDialog(){
+    dialog.close();
 }
+

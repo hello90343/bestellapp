@@ -1,3 +1,9 @@
+#mainMain{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 #divMain{
   display: flex;
 }
@@ -15,6 +21,9 @@
     background: none;
     display: flex;
     flex-direction: column;
+    position: sticky;
+    top: 20px;     
+    align-self: flex-start;    
 }
 
 #stickyMain li{
@@ -35,7 +44,6 @@
 }
 
 .aDSMoney{
-  border: red 2px solid;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -74,6 +82,7 @@
 }
 
 #hamburgerMenuMain{
+  visibility: hidden;
   width: 80%;
   height: 50px;
   display: flex;
@@ -82,12 +91,47 @@
   align-items: center;
   gap: 5px;
   border-radius: 50px;
+  margin: 30px;
+  position: sticky;
+  bottom: 20px;     
+  z-index: 2000;     
+
 }
 
 #dialog{
+  top: 30%;
+  left: 30%;
   width: 50%;
   height: 50%;
-  background-color: green;
+  background-color: var(--white-color);
+  border-radius: 30px;
+  padding: 30px;
+  max-width: 800px;
+  gap: 30px;
 }
 
+#informationArea{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#dialogClose{
+  width: 120px;
+  padding: 10px;
+  border-radius: 30px;
+}
+
+#divDialog{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media(max-width: 800px){
+  #hamburgerMenuMain{
+    visibility: visible;
+  }
+}
 

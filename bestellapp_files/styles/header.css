@@ -26,7 +26,21 @@
 }
 
 #headerHeader img{
-    width: 300px;
+    width: 100px;
     height: auto;
-    border-radius: 50px;
+    border-radius: 10px;
+}
+
+@media (max-width:800px){
+    #hamburgerMenuHeader{
+        display: none;
+    }
+    #stickyMain{
+        display: none !important;
+    }
+    #headerHeader{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

@@ -32,10 +32,12 @@
             <div id="mainDishImgSection" aria-label="Kasachisches Hauptgericht">
               <img id="mainDishLogo" src="./assets/imgs/beschbarmak.png" alt="Ein Bild als Logo vom Beschbarmak">
             </div>
+            <div id="informationArea">
             <h2>Beschbarmak Mix Restaurant</h2>
             <p>Wir sind spezialisiert auf Beschbarmak, frisch und traditionell zubereitet. Zusätzlich bieten wir eine Auswahl an leckeren Pizzen für jeden Geschmack. Einfach, authentisch und immer frisch – willkommen bei uns!</p>
-            <p>Der Lieferpreis liegt bei 5,00 Euro</p>
+            <p>Der Lieferpreis liegt bei 5,00 Euro.</p>
             <a id="evaluationArticle" href="#">Bewertung (4.2 von 5 Sternen)</a>
+            </div>
             <nav id="navArticle">
               <p>&#10148;</p>
               <button>Hauptgerichte</button>
@@ -46,13 +48,18 @@
         </section>
         <section id="stickyMain">
           <h2>Warenkorb</h2>
-          <div id="stickyMainDiv"></div>
+          <div id="stickyMainDiv"><p>Dein Warenkorb ist leer.</p></div>
         </section>
         </div>
         <button onclick="clickHamburgerMenuRespo()" id="hamburgerMenuMain" aria-label="Hamburger-Menu-Respo">
         <p>Warenkorb</p>
       </button>
       <dialog  id="dialog">
+        <div id="divDialog">
+        <h3>Warenkorb</h3>
+        <button onclick="closeDialog()" id="dialogClose">Schliessen</button>
+        </div>
+        <div id="dialogContent"></div>
       </dialog>
   <footer id="footerMain">
     <nav>
