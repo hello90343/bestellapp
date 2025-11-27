@@ -1,12 +1,10 @@
-function clickHamburgerMenu(){
-    const menu = document.getElementById("stickyMain");
-    const sticky = document.getElementById ("hamburgerMenuHeader");
+function toggleSidebarCart() {
+    const cartSidebar = document.getElementById("cartSidebar");
+    const headerToggle = document.getElementById("menuToggleHeader");
 
-    if(menu.style.display === "flex") {
-        menu.style.display = "none";
+    if (cartSidebar.style.display === "flex") {
+        cartSidebar.style.display = "none";
     } else {
-        menu.style.display = "flex";
+        cartSidebar.style.display = "flex";
     }
 }
-
-

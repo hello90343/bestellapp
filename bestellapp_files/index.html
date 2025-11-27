@@ -6,73 +6,85 @@
     <link rel="shortcut icon" href="./assets/imgs/logo.png">
     <title>BestellApp</title>
 
-     <link rel="stylesheet" href="./styles/header.css">
-     <link rel="stylesheet" href="./styles/colors.css">
-     <link rel="stylesheet" href="./styles/standard.css">
-     <link rel="stylesheet" href="./styles/mainDishSection.css">
-     <link rel="stylesheet" href="./styles/allDishesSection.css">
-     <link rel="stylesheet" href="./styles/divMain.css">
-     <link rel="stylesheet" href="./styles/footer.css">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/colors.css">
+    <link rel="stylesheet" href="./styles/standard.css">
+    <link rel="stylesheet" href="./styles/mainDishSection.css">
+    <link rel="stylesheet" href="./styles/allDishesSection.css">
+    <link rel="stylesheet" href="./styles/divMain.css">
+    <link rel="stylesheet" href="./styles/footer.css">
 
 </head>
 <body onload="init()">
-    <header id="headerHeader">
+    <header id="header">
         <img src="./assets/imgs/logo.png" alt="Logo von der Firma(BestellApp Gmbh & KG.)">
-        <button onclick="clickHamburgerMenu()" id="hamburgerMenuHeader" aria-label="Hamburger-Menu">
-        <span class="lineHeader"></span>
-        <span class="lineHeader"></span>
-        <span class="lineHeader"></span>
-      </button>
+        <button onclick="toggleSidebarCart()" id="menuToggleHeader" aria-label="Hamburger-Menu">
+            <span class="lineHeader"></span>
+            <span class="lineHeader"></span>
+            <span class="lineHeader"></span>
+        </button>
     </header>
-    <main id="mainMain">
-      <div id="divMain">
-        <section id="sectionMain">
+
+    <main id="app">
+      <div id="layoutWrapper">
+
+        <section id="contentSection">
+
           <article id="mainDishSection">
             <div id="mainDishImgSection" aria-label="Kasachisches Hauptgericht">
               <img id="mainDishLogo" src="./assets/imgs/beschbarmak.png" alt="Ein Bild als Logo vom Beschbarmak">
             </div>
+
             <div id="informationArea">
-            <h2>Beschbarmak Mix Restaurant</h2>
-            <p>Wir sind spezialisiert auf Beschbarmak, frisch und traditionell zubereitet. Zusätzlich bieten wir eine Auswahl an leckeren Pizzen für jeden Geschmack. Einfach, authentisch und immer frisch – willkommen bei uns!</p>
-            <p>Der Lieferpreis liegt bei 5,00 Euro.</p>
-            <a id="evaluationArticle" href="#">Bewertung (4.2 von 5 Sternen)</a>
+              <h2>Beschbarmak Mix Restaurant</h2>
+              <p>Wir sind spezialisiert auf Beschbarmak, frisch und traditionell zubereitet. Zusätzlich bieten wir eine Auswahl an leckeren Pizzen für jeden Geschmack. Einfach, authentisch und immer frisch – willkommen bei uns!</p>
+              <p>Der Lieferpreis liegt bei 5,00 Euro.</p>
+              <a id="evaluationArticle" href="#">Bewertung (4.2 von 5 Sternen)</a>
             </div>
+
             <nav id="navArticle">
               <p>&#10148;</p>
               <button>Hauptgerichte</button>
               <button>Beilage</button>
             </nav>
           </article>
-          <article id="allDishesSection"></article>
+
+          <article id="menuSection"></article>
         </section>
-        <section id="stickyMain">
+
+        <section id="cartSidebar">
           <h2>Warenkorb</h2>
-          <div id="stickyMainDiv"><p>Dein Warenkorb ist leer.</p></div>
+          <div id="cartSidebarContent"><p>Dein Warenkorb ist leer.</p></div>
         </section>
-        </div>
-        <button onclick="clickHamburgerMenuRespo()" id="hamburgerMenuMain" aria-label="Hamburger-Menu-Respo">
+      </div>
+
+      <button onclick="openMobileCart()" id="cartToggleMobile" aria-label="Hamburger-Menu-Respo">
         <p>Warenkorb</p>
       </button>
-      <dialog  id="dialog">
+
+      <dialog id="cartModal">
         <div id="divDialog">
-        <h3>Warenkorb</h3>
-        <button onclick="closeDialog()" id="dialogClose">Schliessen</button>
+          <h3>Warenkorb</h3>
+          <button onclick="closeCartModal()" id="cartModalCloseBtn">Schliessen</button>
         </div>
-        <div id="dialogContent"></div>
+        <div id="cartModalContent"></div>
       </dialog>
-  <footer id="footerMain">
-    <nav>
-      <ul>
-        <li><a href="">Impressum</a></li>
-        <li><a href="">Datenschutzlinie</a></li>
-      </ul>
-    </nav>
-</footer>
+
+      <footer id="footer">
+        <nav>
+          <ul>
+            <li><a href="">Impressum</a></li>
+            <li><a href="">Datenschutzlinie</a></li>
+          </ul>
+        </nav>
+      </footer>
+
     </main>
 
     <script src="./scripts/templates.js"></script>
     <script src="./scripts/db.js"></script>
     <script src="./scripts/hamburgerMenu.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>

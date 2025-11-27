@@ -1,82 +1,83 @@
-#mainMain{
+#app {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-#divMain{
+
+#layoutWrapper {
   display: flex;
 }
 
-#sectionMain{
-    height: auto;
-    width: 100%;
+#contentSection {
+  height: auto;
+  width: 100%;
 }
 
-#stickyMain{
-    width: 400px;
-    min-height: 100%;
-    padding: 16px;
-    background-color: var(--white-color);
-    background: none;
-    display: flex;
-    flex-direction: column;
-    position: sticky;
-    top: 20px;     
-    align-self: flex-start;    
+#cartSidebar {
+  width: 400px;
+  min-height: 100%;
+  padding: 16px;
+  background-color: var(--white-color);
+  background: none;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
 }
 
-#stickyMain li{
+#cartSidebar li {
   list-style-type: none;
   margin-bottom: 20px;
 }
 
-#stickyMain h2 {
+#cartSidebar h2 {
   text-align: center;
   background: none;
   margin-bottom: 40px;
   margin-top: 20px;
 }
 
-.aDSBottom{
-  display: flex;
-  justify-content: space-between;
-}
-
-.aDSMoney{
+.cartItem {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.aDSAmount{
+.cartItemBottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cartItemAmount {
   display: flex;
   gap: 20px;
   justify-content: center;
   align-items: center;
 }
 
-.aDSAmount button{
+.cartItemAmount button {
   padding: 5px 10px;
   border-radius: 90px;
   border: black 0.1px solid;
   cursor: pointer;
 }
 
-.aDSMoneyTwo{
+.cartItemPrice {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.aDSTrash{
+.cartItemDelete {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
 
-#buttonBestellen{
+#buttonBestellen {
   width: 100%;
   margin-top: 30px;
   padding: 10px;
@@ -84,7 +85,7 @@
   cursor: pointer;
 }
 
-#hamburgerMenuMain{
+#cartToggleMobile {
   visibility: hidden;
   width: 80%;
   height: 50px;
@@ -96,17 +97,17 @@
   border-radius: 50px;
   margin: 30px;
   position: sticky;
-  bottom: 20px;     
-  z-index: 2000;     
+  bottom: 20px;
+  z-index: 2000;
   background-color: black;
   color: white;
 }
 
-#hamburgerMenuMain p{
+#cartToggleMobile p {
   background: none;
 }
 
-#dialog{
+#cartModal {
   top: 30%;
   left: 30%;
   width: 50%;
@@ -118,28 +119,27 @@
   gap: 30px;
 }
 
-#informationArea{
+#informationArea {
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-#dialogClose{
+#cartModalCloseBtn {
   width: 120px;
   padding: 10px;
   border-radius: 30px;
 }
 
-#divDialog{
+#divDialog {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 @media(max-width: 800px){
-  #hamburgerMenuMain{
+  #cartToggleMobile {
     visibility: visible;
   }
 }
-

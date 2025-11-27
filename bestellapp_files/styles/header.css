@@ -1,47 +1,47 @@
-#headerHeader{
-    background-color: var(--orange-color);
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 40px;
+#header {
+  background-color: var(--orange-color);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
 }
 
-#hamburgerMenuHeader{
-    height: 40px;
-    width: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background: none;
-    border: none;
-    cursor: pointer;
+#menuToggleHeader {
+  height: 40px;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-#headerHeader #hamburgerMenuHeader .lineHeader{
-    background-color: var(--white-color);
-    width: 30px;
-    height: 5px;
-    border-radius: 20px;
+#header .lineHeader {
+  background-color: var(--white-color);
+  width: 30px;
+  height: 5px;
+  border-radius: 20px;
 }
 
-#headerHeader img{
-    width: 100px;
-    height: auto;
-    border-radius: 10px;
+#header img {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
 }
 
 @media (max-width:800px){
-    #hamburgerMenuHeader{
-        display: none;
-    }
-    #stickyMain{
-        display: none !important;
-    }
-    #headerHeader{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  #menuToggleHeader {
+    display: none;
+  }
+  #cartSidebar {
+    display: none !important;
+  }
+  #header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
