@@ -1,22 +1,13 @@
-// =======================
-// DOM ELEMENTE
-// =======================
 const menuSection = document.getElementById("menuSection");
 const cartSidebarContent = document.getElementById("cartSidebarContent");
 const cartModalContent = document.getElementById("cartModalContent");
 const cartModal = document.getElementById("cartModal");
 
-// =======================
-// INITIALISIERUNG
-// =======================
 function init() {
     renderMenu();
     updateMobileCartCount();
 }
 
-// =======================
-// MENU RENDERING
-// =======================
 function renderMenu() {
     menuSection.innerHTML = `
         <img id="menuHeaderImage" src="./assets/imgs/allDishesImg.png" alt="Hauptgerichte">
@@ -29,9 +20,6 @@ function renderMenu() {
     }
 }
 
-// =======================
-// WARENKORB RENDERING
-// =======================
 function renderCart() {
     cartSidebarContent.innerHTML = "";
     cartModalContent.innerHTML = "";
@@ -72,9 +60,6 @@ function renderEmptyCart() {
     cartModalContent.innerHTML = emptyHtml;
 }
 
-// =======================
-// BERECHNUNGEN
-// =======================
 function calculateCartTexts() {
     let sum = calculateSubtotal().toFixed(2).replace(".", ",");
     let delivery = calculateDeliveryFee().toFixed(2).replace(".", ",");
@@ -99,9 +84,6 @@ function calculateDeliveryFee() {
     return 5.00;
 }
 
-// =======================
-// ITEM FUNKTIONEN
-// =======================
 function increaseItemAmount(i) {
     menuItems[i].amount++;
     renderCart();
@@ -118,9 +100,6 @@ function removeItem(i) {
     renderCart();
 }
 
-// =======================
-// MOBILER WARENKORB-ZÄHLER
-// =======================
 function updateMobileCartCount() {
     let totalCount = 0;
 
@@ -131,9 +110,6 @@ function updateMobileCartCount() {
     document.getElementById("mobileCartCount").textContent = totalCount;
 }
 
-// =======================
-// BESTELLUNG ABSCHICKEN
-// =======================
 function submitOrder() {
     for (let i = 0; i < menuItems.length; i++) {
         menuItems[i].amount = 0;
@@ -148,9 +124,6 @@ function submitOrder() {
     alert("Vielen Dank für deine Bestellung!");
 }
 
-// =======================
-// MODAL STEUERUNG
-// =======================
 function openMobileCart() {
     cartModal.showModal();
     renderCart();

@@ -1,7 +1,3 @@
-// =======================
-// TEMPLATE FUNKTIONEN
-// =======================
-
 function templateCartItemsList(innerHtml) {
     return `<ul class="cartList">${innerHtml}</ul>`;
 }
