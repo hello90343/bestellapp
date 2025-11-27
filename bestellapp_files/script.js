@@ -1,72 +1,107 @@
+// =======================
+// DOM ELEMENTE
+// =======================
 const menuSection = document.getElementById("menuSection");
-const cartSidebar = document.getElementById("cartSidebar");
 const cartSidebarContent = document.getElementById("cartSidebarContent");
-const cartModal = document.getElementById("cartModal");
 const cartModalContent = document.getElementById("cartModalContent");
+const cartModal = document.getElementById("cartModal");
 
+// =======================
+// INITIALISIERUNG
+// =======================
 function init() {
     renderMenu();
+    updateMobileCartCount();
 }
 
+// =======================
+// MENU RENDERING
+// =======================
 function renderMenu() {
-    menuSection.innerHTML = "";
-    menuSection.innerHTML += `
+    menuSection.innerHTML = `
         <img id="menuHeaderImage" src="./assets/imgs/allDishesImg.png" alt="Hauptgerichte">
     `;
 
     for (let i = 0; i < menuItems.length; i++) {
-        let dishItem = menuItems[i];
-        let priceChange = dishItem.price.toFixed(2).replace(".", ",");
-        let html = renderMenuItem(dishItem, priceChange, i);
-        menuSection.innerHTML += html;
+        let item = menuItems[i];
+        let price = item.price.toFixed(2).replace(".", ",");
+        menuSection.innerHTML += templateMenuItem(item, price, i);
     }
 }
 
+// =======================
+// WARENKORB RENDERING
+// =======================
 function renderCart() {
     cartSidebarContent.innerHTML = "";
     cartModalContent.innerHTML = "";
 
-    let html = `<ul class="cartList">`;
-    let hasItems = false;
+    let itemsHtml = collectCartItemsHtml();
 
-    for (let j = 0; j < menuItems.length; j++) {
-        let dishItem = menuItems[j];
-
-        if (dishItem.amount > 0) {
-            hasItems = true;
-            html += renderMenuItem(dishItem, null, j);
-        }
-    }
-
-    html += `</ul>`;
-
-    if (!hasItems) {
-        html += `
-            <div>
-                <p>Dein Warenkorb ist leer.</p>
-            </div>
-        `;
-
-        cartSidebarContent.innerHTML = html;
-        cartModalContent.innerHTML = html;
+    if (itemsHtml === "") {
+        renderEmptyCart();
+        updateMobileCartCount();
         return;
     }
 
-    let sumNumber = calculateSubtotal();
-    let sumText = sumNumber.toFixed(2).replace(".", ",");
+    let cartTexts = calculateCartTexts();
+    let summaryHtml = templateCartSummary(cartTexts.sum, cartTexts.delivery, cartTexts.total);
+    let fullHtml = templateFullCartHtml(templateCartItemsList(itemsHtml), summaryHtml);
 
-    let delivery = calculateDeliveryFee();
-    let deliveryText = delivery.toFixed(2).replace(".", ",");
+    cartSidebarContent.innerHTML = fullHtml;
+    cartModalContent.innerHTML = fullHtml;
 
-    let total = sumNumber + delivery;
-    let totalText = total.toFixed(2).replace(".", ",");
-
-    html += renderCartSummary(sumText, deliveryText, totalText);
-
-    cartSidebarContent.innerHTML = html;
-    cartModalContent.innerHTML = html;
+    updateMobileCartCount();
 }
 
+function collectCartItemsHtml() {
+    let html = "";
+
+    for (let i = 0; i < menuItems.length; i++) {
+        if (menuItems[i].amount > 0) {
+            html += templateMenuItemInCart(menuItems[i], i);
+        }
+    }
+    return html;
+}
+
+function renderEmptyCart() {
+    let emptyHtml = templateCartItemsList("") + templateEmptyCart();
+
+    cartSidebarContent.innerHTML = emptyHtml;
+    cartModalContent.innerHTML = emptyHtml;
+}
+
+// =======================
+// BERECHNUNGEN
+// =======================
+function calculateCartTexts() {
+    let sum = calculateSubtotal().toFixed(2).replace(".", ",");
+    let delivery = calculateDeliveryFee().toFixed(2).replace(".", ",");
+    let total = (calculateSubtotal() + calculateDeliveryFee())
+        .toFixed(2)
+        .replace(".", ",");
+
+    return { sum, delivery, total };
+}
+
+function calculateSubtotal() {
+    let sum = 0;
+    for (let i = 0; i < menuItems.length; i++) {
+        if (menuItems[i].amount > 0) {
+            sum += menuItems[i].amount * menuItems[i].price;
+        }
+    }
+    return sum;
+}
+
+function calculateDeliveryFee() {
+    return 5.00;
+}
+
+// =======================
+// ITEM FUNKTIONEN
+// =======================
 function increaseItemAmount(i) {
     menuItems[i].amount++;
     renderCart();
@@ -83,41 +118,40 @@ function removeItem(i) {
     renderCart();
 }
 
-function calculateSubtotal() {
-    let sum = 0;
+// =======================
+// MOBILER WARENKORB-ZÄHLER
+// =======================
+function updateMobileCartCount() {
+    let totalCount = 0;
 
     for (let i = 0; i < menuItems.length; i++) {
-        let dishItem = menuItems[i];
-
-        if (dishItem.amount > 0) {
-            sum += dishItem.amount * dishItem.price;
-        }
+        totalCount += menuItems[i].amount;
     }
-    return sum;
+
+    document.getElementById("mobileCartCount").textContent = totalCount;
 }
 
-function calculateDeliveryFee() {
-    return 5.00;
-}
-
+// =======================
+// BESTELLUNG ABSCHICKEN
+// =======================
 function submitOrder() {
-    for (let k = 0; k < menuItems.length; k++) {
-        menuItems[k].amount = 0;
+    for (let i = 0; i < menuItems.length; i++) {
+        menuItems[i].amount = 0;
     }
 
-    cartSidebarContent.innerHTML = renderOrderCompleteMessage();
-
+    cartSidebarContent.innerHTML = templateOrderCompleteMessage();
     cartModalContent.innerHTML = "";
 
-    if (cartModal.open) {
-        cartModal.close();
-    }
+    if (cartModal.open) cartModal.close();
 
+    updateMobileCartCount();
     alert("Vielen Dank für deine Bestellung!");
 }
 
+// =======================
+// MODAL STEUERUNG
+// =======================
 function openMobileCart() {
-    cartModalContent.innerHTML = "";
     cartModal.showModal();
     renderCart();
 }

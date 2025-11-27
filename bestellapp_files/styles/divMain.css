@@ -138,6 +138,10 @@
   align-items: center;
 }
 
+#mobileCartCount{
+  background-color: black;
+}
+
 @media(max-width: 800px){
   #cartToggleMobile {
     visibility: visible;
